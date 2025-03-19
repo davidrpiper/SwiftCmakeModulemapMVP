@@ -1,0 +1,3 @@
+[submodule "dependencies/SwiftCmakeModulemapMVP-dependency"]
+	path = dependencies/SwiftCmakeModulemapMVP-dependency
+	url = https://github.com/davidrpiper/SwiftCmakeModulemapMVP-dependency

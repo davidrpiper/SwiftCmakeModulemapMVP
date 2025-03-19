@@ -1,0 +1,4 @@
+module Dependency {
+    header "../dependencies/SwiftCmakeModulemapMVP-dependency/hello.h"
+    export *
+}
