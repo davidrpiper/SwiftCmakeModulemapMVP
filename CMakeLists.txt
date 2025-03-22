@@ -8,6 +8,9 @@ cmake_minimum_required(VERSION 3.26)
 #
 project(SwiftCMakeModulemapMVP LANGUAGES CXX Swift)
 
+# Force CMake to output compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Verify that we have a new enough compiler
 if("${CMAKE_Swift_COMPILER_VERSION}" VERSION_LESS 5.10)
   message(FATAL_ERROR "Bidirectional C++ Interop requires Swift 5.10 or greater. Have ${CMAKE_Swift_COMPILER_VERSION}")
@@ -24,7 +27,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 add_subdirectory(dependencies/SwiftCmakeModulemapMVP-dependency)
 
-add_executable(mvp src/main.swift)
+add_executable(mvp src/main.swift src/another.swift)
+
+# Generate code index for SourceKit
+target_compile_options(mvp PUBLIC -index-store-path "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # At the moment, this is needed purely for the modulemap file. Just adding it as a source file to the executable doesn't work.
 # The modulemap is essentially a header file, and needs to be included (in the sense of "-I") so that Swift can correctly find
