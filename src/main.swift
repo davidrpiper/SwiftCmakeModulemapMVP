@@ -1,3 +1,5 @@
 import Dependency
 
 printHelloWorld()
+
+printHelloWorldSwift()
