@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.29)
 
 # Must at least specify Swift as a language here, otherwise CMake won't be able to determine
 # the linker languauge in target_link_libraries later on.
